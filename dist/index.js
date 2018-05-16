@@ -12,7 +12,7 @@ AskAuxiliary.prototype = {
   isIntent: function(handlerInput, intentName){
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       && handlerInput.requestEnvelope.request.intent.name === intentName;
-  }
+  },
 
   // sessionEndedRequestかどうか
   isSessionEndedRequest: function(handlerInput){
