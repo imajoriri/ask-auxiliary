@@ -2,6 +2,23 @@ function AskAuxiliary(){
 }
 
 AskAuxiliary.prototype = {
+  // LaunchRequestだったらtrueを返す
+  isLaunchRequest: function(handlerInput){
+    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+  },
+
+  // IntentRequestを前提にインテントをチェック。
+  // params true or false
+  isIntent: function(handlerInput, intentName){
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === intentName;
+  }
+
+  // sessionEndedRequestかどうか
+  isSessionEndedRequest: function(handlerInput){
+    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+  },
+
   // 一般的なスロット取得方法
   getSlot: function(handlerInput, key){
     var request = handlerInput.requestEnvelope.request;
